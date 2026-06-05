@@ -94,15 +94,15 @@ async def process_message(message: Message):
             current_time = datetime.now(timezone(timedelta(hours=7))).strftime("%H:%M:%S - %d/%m/%Y")
             
             response = (
-                f"📊 **KẾT QUẢ ĐỐI SOÁT**\n\n"
+                f"📊 **对账结果**\n\n"
                 f"Order: #{order_id} | {current_time}\n"
                 f"--------------------------\n"
-                f"Số tiền: {format_vn(import_vnd)} VND\n"
-                f"=> Phí ({fee_percent}%): {format_vn(fee_amount)} VND\n"
-                f"=> Thực nhận (VND): {format_vn(remaining_vnd)} VND\n"
+                f"金额: {format_vn(import_vnd)} VND\n"
+                f"=> 手续费 ({fee_percent}%): {format_vn(fee_amount)} VND\n"
+                f"=> 实际到账金额 (VND): {format_vn(remaining_vnd)} VND\n"
                 f"--------------------------\n"
-                f"Tỷ giá: {format_vn(rate_vnd_usdt)}\n"
-                f"Quy đổi sang USDT: **{usdt_amount:.2f} USDT**"
+                f"汇率: {format_vn(rate_vnd_usdt)}\n"
+                f"兑换成 USDT: **{usdt_amount:.2f} USDT**"
             )
             await message.answer(response, parse_mode="Markdown")
         except Exception as e:
